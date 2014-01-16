@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1389890970 source:d:\ece\ing2\pste\code\aleatoire\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"head.h"
+
+1389885739 d:\ece\ing2\pste\code\aleatoire\head.h
+	"choix.h"
+	"notes.h"
+
+1389890110 d:\ece\ing2\pste\code\aleatoire\choix.h
+	"notes.h"
+
+1389891003 d:\ece\ing2\pste\code\aleatoire\notes.h
+
+1389894944 source:d:\ece\ing2\pste\code\aleatoire\choix.c
+	<stdio.h>
+	<stdlib.h>
+	"head.h"
+	"head.h"
+
+1389894511 source:d:\ece\ing2\pste\code\aleatoire\test.c
+	<stdio.h>
+	<stdlib.h>
+	"head.h"
+	"head.h"
+
