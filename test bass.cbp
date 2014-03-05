@@ -33,11 +33,9 @@
 		</Compiler>
 		<Unit filename="Clair Lune.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Controle_du_Son.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Prototypes.h">
 			<Option target="&lt;{~None~}&gt;" />

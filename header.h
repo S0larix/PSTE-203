@@ -6,8 +6,5 @@
 #include "bass.h"
 #include "Prototypes.h"
 #include "Structures.h"
-#include "Controle_du_son.c"
-#include "Clair Lune.c"
-
 
 #endif // HEADER_H_INCLUDED
