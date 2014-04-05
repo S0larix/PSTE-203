@@ -2,21 +2,21 @@
 1393851301 source:c:\users\clément\documents\github\pste-203\main.c
 	"header.h"
 
-1393850197 c:\users\clément\documents\github\pste-203\header.h
+1395597098 c:\users\clément\documents\github\pste-203\header.h
 	<stdio.h>
 	<stdlib.h>
 	"bass.h"
 	"Prototypes.h"
 	"Structures.h"
 
-1390914925 c:\users\clément\documents\github\pste-203\bass.h
+1390649795 c:\users\clément\documents\github\pste-203\bass.h
 	<wtypes.h>
 	<stdint.h>
 
-1390914925 c:\users\clément\documents\github\pste-203\prototypes.h
+1396715047 c:\users\clément\documents\github\pste-203\prototypes.h
 	"header.h"
 
-1390914925 c:\users\clément\documents\github\pste-203\structures.h
+1390655622 c:\users\clément\documents\github\pste-203\structures.h
 
 1390992123 c:\users\clément\documents\github\pste-203\controle_du_son.c
 	"header.h"
@@ -26,9 +26,9 @@
 	<stdlib.h>
 	"header.h"
 
-1390992123 source:c:\users\clément\documents\github\pste-203\controle_du_son.c
+1390661154 source:c:\users\clément\documents\github\pste-203\controle_du_son.c
 	"header.h"
 
-1393851373 source:c:\users\clément\documents\github\pste-203\clair lune.c
+1395597098 source:c:\users\clément\documents\github\pste-203\clair lune.c
 	"header.h"
 
