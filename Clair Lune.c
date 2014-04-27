@@ -3,7 +3,7 @@
 void Au_clair_de_la_lune()
 {
     FILE*fp;
-    int i,gamme;
+    int gamme;
     char note[6],temps[8],chaine[50];
 
     fp=fopen("ACDLL.txt","r");

@@ -14,6 +14,20 @@ int main()
     //printf("%d %d",*tempo,*mesure);
 
 
+    ///initialisation de allegro
+    if (allegro_init() != 0)
+      return 1;
+    install_keyboard();
+    set_color_depth(desktop_color_depth());
+    install_mouse();
+    if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,800,600,0,0))
+    {
+                   set_gfx_mode(GFX_TEXT, 0, 0, 0, 0);
+                   allegro_message("Unable to set any graphic mode\n%s\n", allegro_error);
+                   return 1;
+    }
+
+
     ///initialisation BASS
     BASS_Init(-1, 44100, 0, 0, NULL);
 
@@ -31,7 +45,7 @@ int main()
     ///Libération de la mémoire
     BASS_Free();
     return 0;
-}
+}END_OF_MAIN();
 
 
 void aleatoire_tempo_mesure(int *tempo, int *mesure)
