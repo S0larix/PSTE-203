@@ -1,9 +1,6 @@
 #ifndef NOTES_H_INCLUDED
 #define NOTES_H_INCLUDED
 
-#define Maj 1
-#define min 0
-
 typedef struct note // Un note
 {
     char hauteur; // Sa hauteur (do, ré, mi, fa, sol, la ou si)

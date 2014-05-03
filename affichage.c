@@ -79,10 +79,4 @@ Color = makecol(R,G,B);
 ellipsefill(screen, x, y, 15, 10, Color);
 line(screen, (x-15), y, (x-15), (y+50), Color);
 //line(screen, (x-14), y, (x-14), (y+50), Color);		si la queue est trop fine
-
-   release_screen();
-
-   readkey();
-
-   return 0;
 }

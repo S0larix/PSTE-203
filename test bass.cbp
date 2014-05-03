@@ -46,20 +46,22 @@
 		<Unit filename="Prototypes.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="Structures.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="affichage.c">
 			<Option compilerVar="CC" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="affichage.h" />
+		<Unit filename="choix.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="choix.h" />
 		<Unit filename="header.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="notes.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

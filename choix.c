@@ -1,4 +1,4 @@
-#include "head.h"
+#include "header.h"
 
 void choix_gamme_mineure(t_gamme *gamme)
 {
@@ -436,21 +436,24 @@ void choix_schema (t_morceau* morceau)
 {
     FILE* fichier=NULL;
     char chemin[1000];
+    char buffer[20];
     int ascii=0;
     int i;
     chemin[0]='\0';
 
-    fichier = fopen("types/phrases/nombre.txt","r"); // On ouvre le fichier indiquant combien de schéma existent
+    /*fichier = fopen("types/phrases/nombre.txt","r"); // On ouvre le fichier indiquant combien de schéma existent
     if (fichier!=NULL)
     {
         fscanf(fichier, "%d", &ascii); // On stocke le nombre de schéma existant
         morceau->numero_phrase = (rand()%ascii)+'0'; // On en choisi un de façon aléatoire
     }
-    fclose(fichier);
+    fclose(fichier);*/
 
     /* Récupération du chemin avec le schéma choisi*/
     strcat(chemin, "types/phrases/");
-    chemin[14] = morceau->numero_phrase;
+    //chemin[14] = morceau->numero_phrase;
+    ascii=rand()%3;
+    strcat(chemin,itoa(ascii,buffer,10));
     strcat(chemin, ".txt");
 
 

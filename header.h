@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include <allegro.h>
 #include <winalleg.h>
+#include "notes.h"
 #include "bass.h"
 #include "Prototypes.h"
-#include "Structures.h"
 #include "affichage.h"
+#include "choix.h"
 
 
 #endif // HEADER_H_INCLUDED
