@@ -489,7 +489,7 @@ void choix_note (t_gamme* gamme, t_phrase* phrase)
     printf ("\n\n");
     depart = rand()%7;
     octave_jouer = (rand()%3)+6; // Octave du morceau 6 7 ou 8
-    phrase->accord = malloc(3*sizeof(t_note));  // On alloue l'accord
+    phrase->accord = (t_note*)malloc(3*sizeof(t_note));  // On alloue l'accord
     if (phrase->accord == NULL)
         printf ("\n\n\nERREUR ERREUR ERREUR\n\n\n");
     i=rand()%3; // Choix de l'accord de la phrase

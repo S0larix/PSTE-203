@@ -132,7 +132,6 @@ void transpo_et_son(t_morceau* morceau,int * tempo)
 {
     int i,j;
     char fichier_son[100];
-    char buffer[10];
     printf("nombre_phrase=%d\n",morceau->nombre_phrase);
 
     for (i=0; i<morceau->nombre_phrase; i++)
@@ -144,15 +143,23 @@ void transpo_et_son(t_morceau* morceau,int * tempo)
             for (j=0; j<morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].nb_note; j++)
             {
                 if(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].demi_ton==-1)
-                    sprintf(buffer,"b");
-                if(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].demi_ton==1)
-                    sprintf(buffer,"#");
-                sprintf(fichier_son,"Data/NotesPSTEfull/%c%c%d.wav",
+                    {
+                        sprintf(fichier_son,"Data/NotesPSTEfull/%cb%d.wav",
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
-                        buffer,
-                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave);
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
+                    }
+                else if(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].demi_ton==1)
+                    {
+                        sprintf(fichier_son,"Data/NotesPSTEfull/%cd%d.wav",
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
+                    }
+                else sprintf(fichier_son,"Data/NotesPSTEfull/%c%d.wav",
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
 
             }
+            Lire_Son(fichier_son,tempo,morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].temp);
         }
         else
         {
@@ -160,21 +167,24 @@ void transpo_et_son(t_morceau* morceau,int * tempo)
             for (j=0; j<morceau->morceau_phrases[morceau->schema[i]].nb_note; j++)
             {
                 if(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].demi_ton==-1)
-                    sprintf(buffer,"b");
-                if(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].demi_ton==1)
-                    strcat(buffer,"#");
-
-                sprintf(fichier_son,"Data/NotesPSTEfull/%c%c%d.wav",
+                    {
+                        sprintf(fichier_son,"Data/NotesPSTEfull/%cb%d.wav",
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
-                        buffer,
-                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave);
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
+                    }
+                else if(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].demi_ton==1)
+                    {
+                        sprintf(fichier_son,"Data/NotesPSTEfull/%cd%d.wav",
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
+                    }
+
+                else sprintf(fichier_son,"Data/NotesPSTEfull/%c%d.wav",
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
             }
-        }
+            Lire_Son(fichier_son,tempo,morceau->morceau_phrases[morceau->schema[i]].note[j].temp);
 
-        printf("nom=%s\n",fichier_son);
-        //fichier_son[0]='\0';
-
-
-       //Lire_Son(fichier_son);
-    }
-}
+        }/// fin du else
+    }///fin du for
+}/// fin du ssprog

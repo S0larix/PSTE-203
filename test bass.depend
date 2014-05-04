@@ -1,0 +1,113 @@
+# depslib dependency file v1.0
+1398611844 source:c:\users\clément\documents\github\pste-203\main.c
+	"header.h"
+
+1398611514 c:\users\clément\documents\github\pste-203\header.h
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<winalleg.h>
+	"bass.h"
+	"Prototypes.h"
+	"Structures.h"
+	"affichage.h"
+
+1390649795 c:\users\clément\documents\github\pste-203\bass.h
+	<wtypes.h>
+	<stdint.h>
+
+1396715175 c:\users\clément\documents\github\pste-203\prototypes.h
+	"header.h"
+
+1390655622 c:\users\clément\documents\github\pste-203\structures.h
+
+1390992123 c:\users\clément\documents\github\pste-203\controle_du_son.c
+	"header.h"
+
+1390914923 c:\users\clément\documents\github\pste-203\clair lune.c
+	<stdio.h>
+	<stdlib.h>
+	"header.h"
+
+1390661154 source:c:\users\clément\documents\github\pste-203\controle_du_son.c
+	"header.h"
+
+1398610756 source:c:\users\clément\documents\github\pste-203\clair lune.c
+	"header.h"
+
+1398610618 c:\users\clément\documents\github\pste-203\affichage.h
+
+1399132923 source:c:\users\clément\desktop\pste-203-master\pste-203-master\choix.c
+	"header.h"
+
+1399136027 c:\users\clément\desktop\pste-203-master\pste-203-master\header.h
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<winalleg.h>
+	"notes.h"
+	"bass.h"
+	"Prototypes.h"
+	"affichage.h"
+	"choix.h"
+
+1399130920 c:\users\clément\desktop\pste-203-master\pste-203-master\bass.h
+	<wtypes.h>
+	<stdint.h>
+
+1399134974 c:\users\clément\desktop\pste-203-master\pste-203-master\prototypes.h
+	"header.h"
+
+1399130920 c:\users\clément\desktop\pste-203-master\pste-203-master\affichage.h
+
+1399130921 c:\users\clément\desktop\pste-203-master\pste-203-master\choix.h
+	"notes.h"
+
+1399136588 c:\users\clément\desktop\pste-203-master\pste-203-master\notes.h
+
+1399130920 source:c:\users\clément\desktop\pste-203-master\pste-203-master\clair lune.c
+	"header.h"
+
+1399130920 source:c:\users\clément\desktop\pste-203-master\pste-203-master\controle_du_son.c
+	"header.h"
+
+1399139070 source:c:\users\clément\desktop\pste-203-master\pste-203-master\main.c
+	"header.h"
+
+1399212539 source:c:\users\clément\desktop\pste\choix.c
+	"header.h"
+
+1399136028 c:\users\clément\desktop\pste\header.h
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<winalleg.h>
+	"notes.h"
+	"bass.h"
+	"Prototypes.h"
+	"affichage.h"
+	"choix.h"
+
+1399136590 c:\users\clément\desktop\pste\notes.h
+
+1399130922 c:\users\clément\desktop\pste\bass.h
+	<wtypes.h>
+	<stdint.h>
+
+1399217284 c:\users\clément\desktop\pste\prototypes.h
+	"header.h"
+
+1399130922 c:\users\clément\desktop\pste\affichage.h
+
+1399130922 c:\users\clément\desktop\pste\choix.h
+	"notes.h"
+
+1399216692 source:c:\users\clément\desktop\pste\clair lune.c
+	"header.h"
+
+1399216413 source:c:\users\clément\desktop\pste\controle_du_son.c
+	"header.h"
+
+1399217022 source:c:\users\clément\desktop\pste\main.c
+	"header.h"
+

@@ -4,6 +4,8 @@ void Au_clair_de_la_lune()
 {
     FILE*fp;
     int gamme;
+    int * tempo;
+    float temp;
     char note[6],temps[8],chaine[50];
 
     fp=fopen("ACDLL.txt","r");
@@ -16,7 +18,7 @@ void Au_clair_de_la_lune()
         sprintf(chaine,"Data/Clair_Lune/%s%d%s.wav",note,gamme,temps);
         printf("%s\n",chaine);
         if(strcmp("Soupir",note))
-            Lire_Son(chaine);
+            Lire_Son(chaine,tempo,temp);
         else
             Sleep(100);
     }

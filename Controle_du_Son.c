@@ -1,6 +1,7 @@
 #include "header.h"
 
-void Lire_Son(char* fichier_son)
+void Lire_Son(char* fichier_son,int* tempo,float temps)
+//void Lire_Son(char* fichier_son)
 {
     ///allocation
     HSTREAM audiochannel;
