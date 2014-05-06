@@ -77,15 +77,15 @@
 1399212539 source:c:\users\clément\desktop\pste\choix.c
 	"header.h"
 
-1399136028 c:\users\clément\desktop\pste\header.h
+1399410303 c:\users\clément\desktop\pste\header.h
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	<winalleg.h>
+	"affichage.h"
 	"notes.h"
 	"bass.h"
 	"Prototypes.h"
-	"affichage.h"
 	"choix.h"
 
 1399136590 c:\users\clément\desktop\pste\notes.h
@@ -94,20 +94,23 @@
 	<wtypes.h>
 	<stdint.h>
 
-1399217284 c:\users\clément\desktop\pste\prototypes.h
+1399411000 c:\users\clément\desktop\pste\prototypes.h
 	"header.h"
 
-1399130922 c:\users\clément\desktop\pste\affichage.h
+1399409574 c:\users\clément\desktop\pste\affichage.h
 
 1399130922 c:\users\clément\desktop\pste\choix.h
 	"notes.h"
 
-1399216692 source:c:\users\clément\desktop\pste\clair lune.c
+1399217416 source:c:\users\clément\desktop\pste\clair lune.c
 	"header.h"
 
-1399216413 source:c:\users\clément\desktop\pste\controle_du_son.c
+1399217442 source:c:\users\clément\desktop\pste\controle_du_son.c
 	"header.h"
 
-1399217022 source:c:\users\clément\desktop\pste\main.c
+1399411071 source:c:\users\clément\desktop\pste\main.c
+	"header.h"
+
+1399410840 source:c:\users\clément\desktop\pste\affichage.c
 	"header.h"
 

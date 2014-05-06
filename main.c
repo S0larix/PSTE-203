@@ -54,7 +54,6 @@ int main()
     }
     buffer = create_bitmap(800,600);
 
-
     ///initialisation BASS
     BASS_Init(-1, 44100, 0, 0, NULL);
 
@@ -87,7 +86,7 @@ int main()
                 mesure=(int*)malloc(1*sizeof(int));
                 aleatoire_tempo_mesure(tempo,mesure);
                 morceau = init_alea_morceau();
-                transpo_et_son(morceau,tempo);
+                transpo_et_son(morceau,tempo,buffer);
                 test=1;
                 liberer_morceau(morceau);
 
@@ -128,7 +127,7 @@ void aleatoire_tempo_mesure(int *tempo, int *mesure)
 }
 
 
-void transpo_et_son(t_morceau* morceau,int * tempo)
+void transpo_et_son(t_morceau* morceau,int * tempo,BITMAP* buffer)
 {
     int i,j;
     char fichier_son[100];
@@ -158,8 +157,12 @@ void transpo_et_son(t_morceau* morceau,int * tempo)
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
 
+
+                affichage(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,j,morceau->morceau_phrases[morceau->schema[i]].nb_note);
+                Lire_Son(fichier_son,tempo,morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].temp);
             }
-            Lire_Son(fichier_son,tempo,morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].temp);
+
+
         }
         else
         {
@@ -182,9 +185,13 @@ void transpo_et_son(t_morceau* morceau,int * tempo)
                 else sprintf(fichier_son,"Data/NotesPSTEfull/%c%d.wav",
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
-            }
+
+
+            affichage(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,j,morceau->morceau_phrases[morceau->schema[i]].nb_note);
             Lire_Son(fichier_son,tempo,morceau->morceau_phrases[morceau->schema[i]].note[j].temp);
+            }
 
         }/// fin du else
+    blit(buffer,screen,0,0,0,0,SCREEN_W,SCREEN_H);
     }///fin du for
 }/// fin du ssprog

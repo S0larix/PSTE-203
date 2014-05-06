@@ -48,7 +48,6 @@
 		</Unit>
 		<Unit filename="affichage.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="affichage.h" />
 		<Unit filename="choix.c">

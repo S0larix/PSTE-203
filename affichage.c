@@ -1,82 +1,73 @@
 #include "header.h"
 
-void affichage (int note,int octave)///note entre 1 et 12, octave l’octave ofc
+void affichage (char note,int num_note,int nb_note_total)
 {
     int R, G, B,Color ;
-	int nb_notes =0;
 	int x,y;//coordonnées des notes
+    int intervalle;
+    intervalle=(715-85)/nb_note_total;
 
-    switch(note){
-    case 1:// Do => Rouge
+    if(note=='c')// Do => Rouge
+    {
         R=255 ;
         G=0 ;
         B=0 ;
-        break;
-    case 2://Do# => Rouge-Orange
-        R=255 ;
-        G=63 ;
-        B=0 ;
-        break;
-    case 3://Ré => Orange
+        y=132;
+        }
+    else if(note=='d')//Ré => Orange
+    {
         R=255 ;
         G=127 ;
         B=0 ;
-        break;
-    case 4://Ré# => Orange-Jaune
-        R=255 ;
-        G=190 ;
-        B=0 ;
-        break;
-    case 5://Mi => Jaune
+        y=126;
+    }
+    else if(note=='e')//Mi => Jaune
+    {
         R=255 ;
         G=255 ;
         B=0 ;
-        break;
-    case 6://Fa => Jaune-Vert
+        y=120;
+    }
+    else if (note=='f')//Fa => Jaune-Vert
+    {
         R=127 ;
         G=255 ;
         B=0 ;
-        break;
-    case 7://Fa# => Vert
-        R=0 ;
-        G=255 ;
-        B=0 ;
-        break;
-    case 8://Sol => Vert-Bleu
+        y=114;
+    }
+    else if (note=='e')//Sol => Vert-Bleu
+    {
         R=0 ;
         G=127 ;
         B=127 ;
-        break;
-    case 9://Sol# => Bleu
-        R=0 ;
-        G=127 ;
-        B=255;
-        break;
-    case 10://La => Bleu-Violet
+        y=108;
+    }
+    else if (note=='a')//La => Bleu-Violet
+    {
         R=127 ;
         G=0 ;
         B=255 ;
-        break;
-    case 11://La# => Violet
-        R=255 ;
-        G=0 ;
-        B=255 ;
-        break;
-    case 12://Si => Violet-Rouge
+        y=102;
+    }
+    else if (note=='b')//Si => Violet-Rouge
+    {
         R=255 ;
         G=0 ;
         B=127 ;
-        break;
+        y=96;
+    }
+    else
+    {
+        R=255 ;
+        G=255 ;
+        B=255 ;
+        y=150;
     }
 
-
-R=R*(0.5+octave/10);		//à enlever si ça plante, pb d’arrondi
-G=G*(0.5+octave/10);		//idem
-B=B*(0.5+octave/10);		//idem
-x= 40*nb_notes + 25;
-y= 20*note + 240*octave +20;
+///85<x<715 et 75<y<132
+x= 85+num_note*intervalle;
 Color = makecol(R,G,B);
-ellipsefill(screen, x, y, 15, 10, Color);
-line(screen, (x-15), y, (x-15), (y+50), Color);
+ellipsefill(screen, x, y, 7, 7, Color);
+line(screen, (x-7), y, (x-7), (y+50), Color);
 //line(screen, (x-14), y, (x-14), (y+50), Color);		si la queue est trop fine
 }
