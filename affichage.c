@@ -12,49 +12,49 @@ void affichage (char note,int num_note,int nb_note_total)
         R=255 ;
         G=0 ;
         B=0 ;
-        y=132;
+        y=126;
         }
     else if(note=='d')//Ré => Orange
     {
         R=255 ;
         G=127 ;
         B=0 ;
-        y=126;
+        y=120;
     }
     else if(note=='e')//Mi => Jaune
     {
         R=255 ;
         G=255 ;
         B=0 ;
-        y=120;
+        y=114;
     }
     else if (note=='f')//Fa => Jaune-Vert
     {
         R=127 ;
         G=255 ;
         B=0 ;
-        y=114;
+        y=108;
     }
     else if (note=='e')//Sol => Vert-Bleu
     {
         R=0 ;
         G=127 ;
         B=127 ;
-        y=108;
+        y=102;
     }
     else if (note=='a')//La => Bleu-Violet
     {
         R=127 ;
         G=0 ;
         B=255 ;
-        y=102;
+        y=96;
     }
     else if (note=='b')//Si => Violet-Rouge
     {
         R=255 ;
         G=0 ;
         B=127 ;
-        y=96;
+        y=90;
     }
     else
     {
