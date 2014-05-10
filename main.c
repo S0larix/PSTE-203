@@ -145,17 +145,17 @@ void transpo_et_son(t_morceau* morceau,int * tempo,BITMAP* buffer)
                     {
                         sprintf(fichier_son,"Data/NotesPSTEfull/%cb%d.wav",
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
-                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave);
                     }
                 else if(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].demi_ton==1)
                     {
                         sprintf(fichier_son,"Data/NotesPSTEfull/%cd%d.wav",
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
-                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave);
                     }
                 else sprintf(fichier_son,"Data/NotesPSTEfull/%c%d.wav",
                         morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,
-                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave-4);
+                        morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].octave);
 
 
                 affichage(morceau->morceau_phrases[morceau->morceau_phrases[morceau->nombre_phrase_diff-1].fin].note[j].hauteur,j,morceau->morceau_phrases[morceau->schema[i]].nb_note);

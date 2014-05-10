@@ -126,3 +126,43 @@
 1399287898 source:c:\users\clément\documents\github\pste-203\choix.c
 	"header.h"
 
+1399212539 source:c:\users\clément\desktop\pste-203\choix.c
+	"header.h"
+
+1399410303 c:\users\clément\desktop\pste-203\header.h
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	<winalleg.h>
+	"affichage.h"
+	"notes.h"
+	"bass.h"
+	"Prototypes.h"
+	"choix.h"
+
+1399409574 c:\users\clément\desktop\pste-203\affichage.h
+
+1399136590 c:\users\clément\desktop\pste-203\notes.h
+
+1399130922 c:\users\clément\desktop\pste-203\bass.h
+	<wtypes.h>
+	<stdint.h>
+
+1399411000 c:\users\clément\desktop\pste-203\prototypes.h
+	"header.h"
+
+1399130922 c:\users\clément\desktop\pste-203\choix.h
+	"notes.h"
+
+1399737503 source:c:\users\clément\desktop\pste-203\affichage.c
+	"header.h"
+
+1399217416 source:c:\users\clément\desktop\pste-203\clair lune.c
+	"header.h"
+
+1399739799 source:c:\users\clément\desktop\pste-203\controle_du_son.c
+	"header.h"
+
+1399738870 source:c:\users\clément\desktop\pste-203\main.c
+	"header.h"
+
