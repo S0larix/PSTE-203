@@ -5,7 +5,7 @@ void Lire_Son(char* fichier_son,int* tempo,float temps)
 {
     ///allocation
     HSTREAM audiochannel;
-    int i;
+//    int i;
     ///ouvrir le fichier correspondant
     if(audiochannel = BASS_StreamCreateFile(FALSE,fichier_son,0,0,0))
     {
@@ -14,9 +14,11 @@ void Lire_Son(char* fichier_son,int* tempo,float temps)
         ///tant que le son n'est pas fini
         if(BASS_ChannelIsActive(audiochannel))
         {
+            ///printf("ouverture fichier son %s avec %f temps\n",fichier_son,temps);
             ///for(i=0;i<*tempo*100000;i++);
-            Sleep(((*tempo*temps)/60)*1000);
+            Sleep((*tempo*temps)*1000/60);
             BASS_ChannelStop(audiochannel);
+
         }
     }
 

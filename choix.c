@@ -441,29 +441,26 @@ void choix_schema (t_morceau* morceau)
     int i;
     chemin[0]='\0';
 
-    /*fichier = fopen("types/phrases/nombre.txt","r"); // On ouvre le fichier indiquant combien de schéma existent
+    fichier = fopen("types/phrases/nombre.txt","r"); // On ouvre le fichier indiquant combien de schéma existent
     if (fichier!=NULL)
     {
         fscanf(fichier, "%d", &ascii); // On stocke le nombre de schéma existant
-        morceau->numero_phrase = (rand()%ascii)+'0'; // On en choisi un de façon aléatoire
     }
-    fclose(fichier);*/
+    fclose(fichier);
 
     /* Récupération du chemin avec le schéma choisi*/
     strcat(chemin, "types/phrases/");
-    //chemin[14] = morceau->numero_phrase;
-    ascii=rand()%3;
-    strcat(chemin,itoa(ascii,buffer,10));
+    sprintf (buffer, "%d", rand()%ascii);
+    strcat(chemin, buffer);
     strcat(chemin, ".txt");
-
 
     fichier = fopen(chemin, "r");
     if (fichier!=NULL)
     {
         fscanf(fichier, "%d", &morceau->nombre_phrase); // On récupère le nombre total de phrases dans le morceau
-        morceau->schema = malloc (morceau->nombre_phrase * sizeof(int)); // On alloue un tableau correspondant à l'enchainement des phrases dans le morceau
+        morceau->schema = (int*)malloc (morceau->nombre_phrase * sizeof(int)); // On alloue un tableau correspondant à l'enchainement des phrases dans le morceau
         fscanf(fichier, "%d", &morceau->nombre_phrase_diff); // On récupère le nombre de phrases différentes dans le morceau
-        morceau->morceau_phrases = malloc (morceau->nombre_phrase_diff * sizeof(t_phrase)); // on alloue un tableau de chaine différentes
+        morceau->morceau_phrases = (t_phrase*)malloc (morceau->nombre_phrase_diff * sizeof(t_phrase)); // on alloue un tableau de chaine différentes
         for (i=0;i<morceau->nombre_phrase;i++)
         {
             fscanf(fichier, "%d", &morceau->schema[i]); // On récupère l'enchainement de phrases
@@ -488,7 +485,7 @@ void choix_note (t_gamme* gamme, t_phrase* phrase)
 
     printf ("\n\n");
     depart = rand()%7;
-    octave_jouer = (rand()%3)+6; // Octave du morceau 6 7 ou 8
+    octave_jouer = (rand()%3)+3; // Octave du morceau 3,4,5
     phrase->accord = (t_note*)malloc(3*sizeof(t_note));  // On alloue l'accord
     if (phrase->accord == NULL)
         printf ("\n\n\nERREUR ERREUR ERREUR\n\n\n");
@@ -499,9 +496,9 @@ void choix_note (t_gamme* gamme, t_phrase* phrase)
         phrase->accord[0] = gamme->choix[depart]; // Note à unir
         phrase->accord[1] = gamme->choix[depart]; // Note à unir (la même)
         phrase->accord[2] = gamme->choix[depart]; // Note à unir (la même)
-        phrase->accord[0].octave = octave_jouer-1; // octave -1
-        phrase->accord[1].octave = octave_jouer; // octave de base du morceau
-        phrase->accord[2].octave = octave_jouer+1; // octave +1
+        phrase->accord[0].octave = 3;
+        phrase->accord[1].octave = 4;
+        phrase->accord[2].octave = 5;
         break;
     case 1: // tierce
         phrase->accord[0]=gamme->choix[depart];
@@ -530,7 +527,7 @@ void choix_note (t_gamme* gamme, t_phrase* phrase)
     //Choisis un nombre de note au hasard entre 6 et 11 notes dans la phrase
     j=(rand()%5)+6; /// Modifié dans la version finale du code
     phrase->nb_note=j;
-    phrase->note = malloc(j*sizeof(t_note));
+    phrase->note = (t_note*)malloc(j*sizeof(t_note));
     /*test*/printf ("\n");
     for (i=0;i<j;i++)
     {
@@ -551,7 +548,12 @@ void choix_tempo (t_phrase* phrase)
     {
         while (ok!=1 && nb_note_rest>0)
         {
-            tempo = 0.25 * pow(2, (rand()%5)); // tempo aléatoire (0.25*2^r)
+            tempo = 0.25 * pow(2, (rand()%4)); // tempo aléatoire (0.25*2^r)
+
+            if (nb_note_rest==phrase->nb_note)// Si on traite la première note de la phrase
+                phrase->note[0].octave = 4; // octave centrale
+            if (nb_note_rest==1)// Si on traite la dernière note de la phrase
+                phrase->note[(phrase->nb_note)-1].octave = 4; // octave centrale
 
             if (tempo==0.25) // double croche
                {
@@ -565,6 +567,7 @@ void choix_tempo (t_phrase* phrase)
                                 phrase->note[j].temp=tempo;
                             }
                             nb_note_rest=nb_note_rest-t;
+                            ok=1; // On valide les notes
                         }
                         else
                         {
@@ -578,16 +581,15 @@ void choix_tempo (t_phrase* phrase)
                                     phrase->note[j].temp=tempo; // les doubles croches
                             }
                             nb_note_rest = nb_note_rest-t;
+                            ok=1; // On valide les notes
                         }
-
-                        ok=1; // On valide les notes
                     }
                }
             if (tempo==0.5) // croche
                 {
                     if (nb_note_rest%2==0)
                     {
-                        t = (rand()%(nb_note_rest/2))+1; // On choisit aléatoirement un nombre de note allant de 1 à la moitié des notes restantes
+                        t = (rand()%(nb_note_rest/2))+2; // On choisit aléatoirement un nombre de note allant de 1 à la moitié des notes restantes
                         for (j=i;j<i+t;j++) // Elles deviennent toutes des croches
                         {
                             phrase->note[j].temp=tempo;
@@ -595,30 +597,45 @@ void choix_tempo (t_phrase* phrase)
                         nb_note_rest=nb_note_rest-t; // On enlève t notes du compte
                         ok=1; // on valide
                     }
-                    else
+                    else if (nb_note_rest>=3)
                     {
                         t = 3;
-                         for (j=i;j<i+t;j++) // Elles deviennent un triolet
+                        for (j=i;j<i+t;j++) // Elles deviennent un triolet
                         {
                             phrase->note[j].temp=0.33;
                         }
                         nb_note_rest=nb_note_rest-t; // On enlève t notes du compte
                         ok=1; // on valide
+
                     }
                 }
-            if (tempo==1 || tempo==2)// noire ou blanche
+            if (tempo==1)// noire ou blanche
                 {
                     phrase->note[i].temp=tempo; // le tempo est pris
                     nb_note_rest--; // Pas de changement dans les prochaines notes
                     ok =1; // validation
                 }
-            if (tempo==4) // ronde
+            if (tempo==2) // ronde
                 {
+                    tempo=1.5;
                     if (phrase->accord[0].hauteur == phrase->accord[1].hauteur) // Si unisson
                     {
                         phrase->note[i].temp=tempo; // le tempo est pris
                         ///suppression de 2/4 notes suivantes ///
-                        nb_note_rest--; // Pas de changement dans les prochaines notes
+
+                        if ((nb_note_rest-1)>=4)
+                        {
+                            t=(rand()%3)+1;
+                        }
+                        else
+                        {
+                            t=nb_note_rest-1;
+                            phrase->note[i].octave=4;
+                        }
+
+                        phrase->nb_note = phrase->nb_note-t;
+
+                        nb_note_rest=nb_note_rest-(t+1); // Pas de changement dans les prochaines notes
                         ok =1; // validation
                     }
                 }
@@ -633,7 +650,7 @@ t_morceau* init_alea_morceau()
     t_morceau* morceau;
     int i;
 
-    morceau = malloc(sizeof(t_morceau)); // Création mémoire du morceau
+    morceau = (t_morceau*)malloc(sizeof(t_morceau)); // Création mémoire du morceau
 
     choix_gamme(&morceau->morceau_gamme); // Choix aléatoire de la gamme du morceau
 
@@ -641,6 +658,7 @@ t_morceau* init_alea_morceau()
 
     for (i=0;i<morceau->nombre_phrase_diff;i++)
         {
+            printf ("coucou");
             choix_note(&morceau->morceau_gamme, &morceau->morceau_phrases[i]);
             choix_tempo(&morceau->morceau_phrases[i]);
         }
