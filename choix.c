@@ -548,7 +548,7 @@ void choix_tempo (t_phrase* phrase)
     {
         while (ok!=1 && nb_note_rest>0)
         {
-            tempo = 0.25 * pow(2, (rand()%4)); // tempo aléatoire (0.25*2^r)
+            tempo = 0.25 * (float)pow(2, (rand()%3)); // tempo aléatoire (0.25*2^r)
 
             if (nb_note_rest==phrase->nb_note)// Si on traite la première note de la phrase
                 phrase->note[0].octave = 4; // octave centrale
@@ -561,26 +561,28 @@ void choix_tempo (t_phrase* phrase)
                     {
                         if (nb_note_rest%2==0) // Nb de notes restant = pair
                         {
-                            t=4; // On prend les quatres prochaines notes
-                            for (j=i;j<i+t;j++) // elles deviennent toutes des doubles croches
+                            // On prend les quatres prochaines notes
+                            for (j=i;j<i+4;j++) // elles deviennent toutes des doubles croches
                             {
                                 phrase->note[j].temp=tempo;
                             }
-                            nb_note_rest=nb_note_rest-t;
+                            nb_note_rest=nb_note_rest-4;
+                            i=i+3;
                             ok=1; // On valide les notes
                         }
                         else
                         {
-                            t=3; // les trois prochaines notes
+                            // Dans les trois prochaines notes
                             k=rand()%3; // On selectionne celle qui deviendra une croche
-                            for (j=i;j<i+t;j++) // elles deviennent deux doubles croches et une simple
+                            for (j=i;j<i+3;j++) // elles deviennent deux doubles croches et une simple
                             {
                                 if (j==i+k)
                                     phrase->note[j].temp=0.5; // la croche
                                 else
                                     phrase->note[j].temp=tempo; // les doubles croches
                             }
-                            nb_note_rest = nb_note_rest-t;
+                            nb_note_rest = nb_note_rest-3;
+                            i=i+2;
                             ok=1; // On valide les notes
                         }
                     }
@@ -595,50 +597,33 @@ void choix_tempo (t_phrase* phrase)
                             phrase->note[j].temp=tempo;
                         }
                         nb_note_rest=nb_note_rest-t; // On enlève t notes du compte
+                        i=i+(t-1);
                         ok=1; // on valide
                     }
                     else if (nb_note_rest>=3)
                     {
-                        t = 3;
-                        for (j=i;j<i+t;j++) // Elles deviennent un triolet
+
+                        for (j=i;j<i+3;j++) // Elles deviennent un triolet
                         {
                             phrase->note[j].temp=0.33;
                         }
-                        nb_note_rest=nb_note_rest-t; // On enlève t notes du compte
+                        nb_note_rest=nb_note_rest-3; // On enlève t notes du compte
+                        i=i+2;
                         ok=1; // on valide
 
                     }
                 }
-            if (tempo==1)// noire ou blanche
+            if (tempo==1||tempo==2)// noire ou blanche
                 {
+                    if (tempo==2)
+                        tempo=1.25;
+                    if (tempo==1)
+                        tempo=0.8;
                     phrase->note[i].temp=tempo; // le tempo est pris
                     nb_note_rest--; // Pas de changement dans les prochaines notes
-                    ok =1; // validation
+                    ok=1; // validation
                 }
-            if (tempo==2) // ronde
-                {
-                    tempo=1.5;
-                    if (phrase->accord[0].hauteur == phrase->accord[1].hauteur) // Si unisson
-                    {
-                        phrase->note[i].temp=tempo; // le tempo est pris
-                        ///suppression de 2/4 notes suivantes ///
 
-                        if ((nb_note_rest-1)>=4)
-                        {
-                            t=(rand()%3)+1;
-                        }
-                        else
-                        {
-                            t=nb_note_rest-1;
-                            phrase->note[i].octave=4;
-                        }
-
-                        phrase->nb_note = phrase->nb_note-t;
-
-                        nb_note_rest=nb_note_rest-(t+1); // Pas de changement dans les prochaines notes
-                        ok =1; // validation
-                    }
-                }
             }
 
             ok =0; // On réinitialise la validation
@@ -665,7 +650,6 @@ t_morceau* init_alea_morceau()
 
     return morceau;
 }
-
 
 void liberer_morceau(t_morceau* morceau)
 {
